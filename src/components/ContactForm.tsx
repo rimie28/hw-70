@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
-import { useAppDispatch } from '../app/hooks.ts';
-import { useNavigate} from 'react-router-dom';
-import { addContactThunk} from '../containers/contacts/contactsSlice.ts';
+import React, { useState } from "react";
+import { useAppDispatch } from "../app/hooks.ts";
+import { useNavigate } from "react-router-dom";
+import { addContactThunk } from "../containers/contacts/contactsSlice.ts";
 
 const ContactForm = () => {
   const [contact, setContact] = useState({
-    id: '',
-    name: '',
-    phone: '',
-    email: '',
-    photo: '' });
+    id: "",
+    name: "",
+    phone: "",
+    email: "",
+    photo: "",
+  });
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -20,8 +21,8 @@ const ContactForm = () => {
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-      await dispatch(addContactThunk(contact));
-    navigate('/');
+    await dispatch(addContactThunk(contact));
+    navigate("/");
   };
 
   return (
@@ -92,7 +93,7 @@ const ContactForm = () => {
             src={contact.photo}
             alt="Preview-photo"
             className="mt-3 img-fluid"
-            style={{width: '100px', height: '100px', objectFit: 'cover'}}
+            style={{ width: "100px", height: "100px", objectFit: "cover" }}
           />
         )}
       </div>

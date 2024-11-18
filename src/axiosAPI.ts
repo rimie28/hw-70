@@ -1,14 +1,13 @@
-import axios from 'axios';
-import { Contact } from './types';
-
+import axios from "axios";
+import { Contact } from "./types";
 
 const axiosAPI = axios.create({
-  baseURL: 'https://server-2-80a59-default-rtdb.europe-west1.firebasedatabase.app/contacts',
+  baseURL:
+    "https://server-2-80a59-default-rtdb.europe-west1.firebasedatabase.app/contacts",
 });
 
-
 export const getContacts = async () => {
-  const response = await axiosAPI.get('.json');
+  const response = await axiosAPI.get(".json");
   const data = response.data;
 
   if (data) {
@@ -21,16 +20,16 @@ export const getContacts = async () => {
   return [];
 };
 
-export const addContact = async (contact: Contact ) => {
+export const addContact = async (contact: Contact) => {
   const newContact = {
-    id: '',
+    id: "",
     name: contact.name,
     phone: contact.phone,
     email: contact.email,
     photo: contact.photo,
-  }
-  await axiosAPI.post('.json', newContact);
-}
+  };
+  await axiosAPI.post(".json", newContact);
+};
 
 export const editContact = async (id: string, contact: Contact) => {
   const updatedContact = {
@@ -40,7 +39,7 @@ export const editContact = async (id: string, contact: Contact) => {
     email: contact.email,
     photo: contact.photo,
   };
-  await axiosAPI.put(`/${id}.json`, updatedContact);
+  await axiosAPI.put(`/${contact.id}.json`, updatedContact);
 };
 
 export const deleteContact = async (id: string) => {
